@@ -283,7 +283,7 @@ public class PlanController {
     // place_id로 장소 세부 정보 가져옴
     PlaceDto detailInfo(String id) {
         String apiUrl = "https://maps.googleapis.com/maps/api/place/details/json?";
-        String apiKey = "AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY";
+        String apiKey = "*YourServiceKey*";
 //        String placeId = "ChIJnxzMERJnezURLofEAtU4RfQ";
 
         String url = apiUrl + "key=" + apiKey + "&place_id=" + id;

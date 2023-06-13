@@ -85,7 +85,7 @@ public Map<String, Object> findPath(Map<String, Object> map, int len) {
 
             origin = (String) start.get("place_id");
             destination = (String) end.get("place_id");
-            String url = "https://maps.googleapis.com/maps/api/directions/json?" + "origin=place_id:" + origin + "&destination=place_id:" + destination + "&key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY&mode=DRIVING";
+            String url = "https://maps.googleapis.com/maps/api/directions/json?" + "origin=place_id:" + origin + "&destination=place_id:" + destination + "&key=*YourServiceKey*&mode=DRIVING";
             System.out.println(url);
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

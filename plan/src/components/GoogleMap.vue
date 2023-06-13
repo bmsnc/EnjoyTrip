@@ -944,7 +944,7 @@ export default {
         route[i] = this.addRoute[i];
       }
       route.size = this.addRoute.length;
-      //https://maps.googleapis.com/maps/api/directions/json?origin=%EB%8F%84%EC%BF%84&destination=%EC%98%A4%EC%82%AC%EC%B9%B4&key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY&mode=DRIVING
+      //https://maps.googleapis.com/maps/api/directions/json?origin=%EB%8F%84%EC%BF%84&destination=%EC%98%A4%EC%82%AC%EC%B9%B4&key=*YourServiceKey*&mode=DRIVING
       console.log(route);
       http
         .post("/plan/api/find", route)
@@ -1021,7 +1021,7 @@ export default {
             let place = autocomplete.getPlace();
             console.log(place);
 
-             axios.get(`https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY&place_id=` +place.place_id)
+             axios.get(`https://maps.googleapis.com/maps/api/place/details/json?key=*YourServiceKey*&place_id=` +place.place_id)
              .then(response => {
               console.log(response);
               var t = response.data.result;
@@ -1055,7 +1055,7 @@ export default {
       //     const location = this.curX + "," + this.curY;
       //     const radius = 5000;
       //     const keyword = encodeURIComponent(this.title); // 특수 문자가 포함될 수 있으므로 인코딩
-      //     const apiKey = "AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY"; // 실제로 사용하는 구글 API 키로 대체해야 합니다.
+      //     const apiKey = "*YourServiceKey*"; // 실제로 사용하는 구글 API 키로 대체해야 합니다.
 
       //     const url = `${baseURL}?location=${location}&radius=${radius}&keyword=${keyword}&key=${apiKey}`;
       //     console.log(url);
@@ -1167,7 +1167,7 @@ export default {
     carRoad() {
       this.car = [];
       this.transits = [];
-      const url = `https://maps.googleapis.com/maps/api/directions/json?origin=place_id:${this.start}&destination=place_id:${this.end}&key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY&mode=DRIVING&alternatives=true`;
+      const url = `https://maps.googleapis.com/maps/api/directions/json?origin=place_id:${this.start}&destination=place_id:${this.end}&key=*YourServiceKey*&mode=DRIVING&alternatives=true`;
 
       axios.get(url).then((response) => {
         // console.log(response.data.routes);
@@ -1204,7 +1204,7 @@ export default {
     findRoad() {
       this.car = [];
       this.transits = [];
-      const url = `https://maps.googleapis.com/maps/api/directions/json?origin=place_id:${this.start}&destination=place_id:${this.end}&mode=transit&key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY&alternatives=true`;
+      const url = `https://maps.googleapis.com/maps/api/directions/json?origin=place_id:${this.start}&destination=place_id:${this.end}&mode=transit&key=*YourServiceKey*&alternatives=true`;
 
       axios
         .get(url)
@@ -1314,7 +1314,7 @@ export default {
     },
     findAir() {
       fetch("https://test.api.amadeus.com/v1/security/oauth2/token", {
-        body: "grant_type=client_credentials&client_id=5A4Gye2dEDq3JwBBd3CYlszVu5i2abMm&client_secret=ybgGoAmU9JnOuAvp",
+        body: "grant_type=client_credentials&client_id=*YourServiceKey*&client_secret=*YourServiceKey*",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -1434,7 +1434,7 @@ export default {
       this.clearMarkers();
 
       this.hotels = [];
-      const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=호텔&location=${this.searchX},${this.searchY}&radius=3000&key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY`;
+      const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=호텔&location=${this.searchX},${this.searchY}&radius=3000&key=*YourServiceKey*`;
       console.log(url);
       console.log(this.searchX);
       console.log(this.searchY);
@@ -1447,12 +1447,12 @@ export default {
             const url =
               "https://maps.googleapis.com/maps/api/place/photo?maxwidth=40&photoreference=" +
               photos.photo +
-              "&key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY";
+              "&key=*YourServiceKey*";
             place.photo = url;
             // this.places.push(place);
             axios
               .get(
-                `https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY&place_id=` +
+                `https://maps.googleapis.com/maps/api/place/details/json?key=*YourServiceKey*&place_id=` +
                   place.place_id
               )
               .then((res) => {
@@ -1489,7 +1489,7 @@ export default {
       this.clearMarkers();
       this.places = [];
       const keyword = encodeURIComponent(this.title);
-      const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY&query=${keyword}`;
+      const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?key=*YourServiceKey*&query=${keyword}`;
 
       axios
         .get(url)
@@ -1505,12 +1505,12 @@ export default {
                 const url =
                   "https://maps.googleapis.com/maps/api/place/photo?maxwidth=40&photoreference=" +
                   photos.photo +
-                  "&key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY";
+                  "&key=*YourServiceKey*";
                 place.photo = url;
                 // this.places.push(place);
                 axios
                   .get(
-                    `https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY&place_id=` +
+                    `https://maps.googleapis.com/maps/api/place/details/json?key=*YourServiceKey*&place_id=` +
                       place.place_id
                   )
                   .then((res) => {
@@ -1566,7 +1566,7 @@ export default {
         this.searchX
       },${this.searchY}&radius=${
         this.radius * 1000
-      }&key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY`;
+      }&key=*YourServiceKey*`;
       axios.get(url).then((reponse) => {
         var temp = reponse.data.results;
         // this.places = reponse.data.results;
@@ -1577,12 +1577,12 @@ export default {
             const url =
               "https://maps.googleapis.com/maps/api/place/photo?maxwidth=40&photoreference=" +
               photos.photo +
-              "&key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY";
+              "&key=*YourServiceKey*";
             place.photo = url;
             // this.places.push(place);
             axios
               .get(
-                `https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY&place_id=` +
+                `https://maps.googleapis.com/maps/api/place/details/json?key=*YourServiceKey*&place_id=` +
                   place.place_id
               )
               .then((res) => {
@@ -1794,12 +1794,12 @@ export default {
               const url =
                 "https://maps.googleapis.com/maps/api/place/photo?maxwidth=40&photoreference=" +
                 photos.photo +
-                "&key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY";
+                "&key=*YourServiceKey*";
               place.photo = url;
 
               axios
                 .get(
-                  `https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC5Wsfp6CnCn4wltag9i5XrDNGvOwipkiY&place_id=` +
+                  `https://maps.googleapis.com/maps/api/place/details/json?key=*YourServiceKey*&place_id=` +
                     place.place_id
                 )
                 .then((res) => {
